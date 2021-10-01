@@ -3,46 +3,42 @@ import Task from './task';
 
 
 
-function ToDo(props){
-    const [currentTodo, updateList] = useState({newItem:"", list:[]});
+function ToDo(){
+    const [currentTodo, updateList] = useState({newItem:"", 
+    list:[ 
+        {
+        task: "clean house", 
+        ID : 1
+    },
 
-    const updateCurrentList = (e) => {
-        e.preventDefault(); 
-        console.log(currentTodo.newItem);
-        updateList([...currentTodo.list, currentTodo.newItem]); 
-        currentTodo.newItem = ""; 
-    }
-    const decreaseCount = () => {
-        if(currentTodo !== 0) {
-            updateList( currentTodo); 
-        }
-        
+    {
+        task: "fix car", 
+        ID : 2
     }
 
-    console.log(currentTodo.list); 
 
-    useEffect(()=> {
-        console.log(currentTodo.list); 
-    }, []);
+    ]});
 
     
-    // const task = currentTodo.list.map((task) => {
-    //     return (
-    //       <Task task={task} /> )
-    //       });
 
     return(
 
         <div className ="container">
-        <form> 
+        {/* <form> 
         <input className="formInput" type="text" placeholder="Enter your todo Item"
         value={currentTodo.newItem}
          onChange={e => updateList(e.target.value)} />
         <button onClick={updateCurrentList} > Submit </button>
-        </form> 
+        </form>  */}
 
-        <h1> Tests with the current state {currentTodo.newItem} </h1>
+        {currentTodo.list.map((tasks) => {
+            return (
+                <Task task = {tasks.task} />
+            );
+        }
 
+
+        )}
        
         
         </div>
