@@ -1,27 +1,50 @@
-import React, {useState} from 'react'; 
+import React, {useState, useEffect} from 'react'; 
+import Task from './task';
 
 
 
 function ToDo(props){
-    const [count, setCount] = useState(0);
+    const [currentTodo, updateList] = useState({newItem:"", list:[]});
 
-    const increaseCount = () => {
-        setCount(count + 1); 
+    const updateCurrentList = (e) => {
+        e.preventDefault(); 
+        console.log(currentTodo.newItem);
+        updateList([...currentTodo.list, currentTodo.newItem]); 
+        currentTodo.newItem = ""; 
     }
     const decreaseCount = () => {
-        if(count != 0) {
-            setCount(count - 1); 
+        if(currentTodo !== 0) {
+            updateList( currentTodo); 
         }
         
     }
 
+    console.log(currentTodo.list); 
+
+    useEffect(()=> {
+        console.log(currentTodo.list); 
+    }, []);
+
+    
+    // const task = currentTodo.list.map((task) => {
+    //     return (
+    //       <Task task={task} /> )
+    //       });
+
     return(
 
         <div className ="container">
-        <input className="formInput" type="text" placeholder="Enter your todo Item" />
-        <h1> Test with the current state {count} </h1>
-        <button onClick={increaseCount} >Increase Count </button>
-        <button onClick={decreaseCount}> Decrease Count</button>
+        <form> 
+        <input className="formInput" type="text" placeholder="Enter your todo Item"
+        value={currentTodo.newItem}
+         onChange={e => updateList(e.target.value)} />
+        <button onClick={updateCurrentList} > Submit </button>
+        </form> 
+
+        <h1> Tests with the current state {currentTodo.newItem} </h1>
+
+       
+        
         </div>
     ); 
 
