@@ -30,7 +30,9 @@ const deleteTask = () => {
 }
 
 const addTask = (userInput) => {
-    console.log(userInput)
+    let copy = [...currentTodo];
+    copy = [...copy, {id: Math.floor(Math.random() * 1000), Task: userInput, completed: false}]
+    updateTodo(copy); 
 }
 
     return(
