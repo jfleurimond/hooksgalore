@@ -34,16 +34,15 @@ const deleteTask = () => {
 
         <div className = "mainContainer"> Main Test
         
-        
-        {currentTodo.map( (tasks)=> {
-
-            return(
-            <p>{tasks.Task}</p>
+            {currentTodo.map((tasks) => {
+                return(
+                    <Todo todos = {tasks} />
+                )
+            }
 
             )}
-            )}
-        
-        
+               
+            
         </div>
 
        )}
