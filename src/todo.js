@@ -1,9 +1,9 @@
 import React from 'react'; 
 
-const Todo = ({tasks}) => {
+const Todo = () => {
 
     return(
-        <h3 key={tasks[1]}> {tasks}</h3>
+        <h3> Test </h3>
 
     )
 

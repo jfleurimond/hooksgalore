@@ -4,56 +4,51 @@ import Form from './form';
 
 
 function ToDos(){
-    const [todoList, updateTodoList] = useState([{id: 1, task:"homework", completed: false}]);
-
-    const [userInput, setUserInput] = useState();
-
-    const handlesubmit = (e)=> {
-        e.preventDefault(); 
-        addTask(userInput);
-        setUserInput("")
-
-    }
     
-    const upddateNewValue = (e) => {
-        setUserInput(e.target.value); 
-        console.log(userInput);
-    
-    
-    }
+const [currentTodo, updateTodo] = useState([
+{
+    id: 1,
+    Task: "Clean Room",
+    completed: false
+}, 
 
-    const addTask = (userInput) => {
+{
+    id: 2,
+    Task: "Take out Trash",
+    completed: false
+}
 
-        let copy = [...todoList]; 
-        copy = [...copy, [{id: Math.floor(Math.random() * 100), task: userInput,  completed: false}]];
-        updateTodoList([...copy, userInput]); 
-    }
 
+]); 
+
+const handleToggle =() =>{
+    console.log("Togggle test");
+}
+
+const deleteTask = () => {
+    console.log("deleting task test");
+}
    
 
     return(
 
-        <div className ="container">
-       
+        <div className = "mainContainer"> Main Test
+        
+        
+        {currentTodo.map( (tasks)=> {
 
-       
-       
-       <Form userInput={userInput} handlesubmit={handlesubmit} upddateNewValue={upddateNewValue}/>
-       
-       {todoList.map( (tasks) => {
+            return(
+            <p>{tasks.Task}</p>
 
-            return (
-                <Todo tasks={tasks} />
-            )
-
-       }
+            )}
+            )}
+        
+        
+        </div>
 
        )}
         
-        </div>
-    ); 
-
-}
+    
 
 
 export default ToDos; 
