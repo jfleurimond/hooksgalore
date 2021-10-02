@@ -28,11 +28,16 @@ const handleToggle =() =>{
 const deleteTask = () => {
     console.log("deleting task test");
 }
-   
+
+const addTask = (userInput) => {
+    console.log(userInput)
+}
 
     return(
 
-        <div className = "mainContainer"> Main Test
+        <div className = "mainContainer"> <h1>Main Test </h1>
+
+            <Form addTask = {addTask}/> 
         
             {currentTodo.map((tasks) => {
                 return(
@@ -41,6 +46,7 @@ const deleteTask = () => {
             }
 
             )}
+        
                
             
         </div>
