@@ -1,9 +1,16 @@
 import React from 'react'; 
+import {FaTimes} from 'react-icons/fa'
 
-const Todo = ({todos}) => {
+// Going to install react icons to use x to delete icons
+// npm i react-icons
+const Todo = ({todos, deleteTask}) => {
 
     return(
-        <h4> {todos.Task} </h4>
+        <div >
+        <h4 key={todos.id}>Task: {todos.Task} <FaTimes className="xbtn" onClick={() => deleteTask(todos.id)}/> </h4>
+        <p>Id: {todos.id}</p>
+
+        </div>
 
     )
 

@@ -5,28 +5,17 @@ import Form from './form';
 
 function ToDos(){
     
-const [currentTodo, updateTodo] = useState([
-{
-    id: 1,
-    Task: "Clean Room",
-    completed: false
-}, 
-
-{
-    id: 2,
-    Task: "Take out Trash",
-    completed: false
-}
-
-
-]); 
+const [currentTodo, updateTodo] = useState([]); 
 
 const handleToggle =() =>{
     console.log("Togggle test");
 }
 
-const deleteTask = () => {
-    console.log("deleting task test");
+const deleteTask = (tasktodelete) => {
+    let copy = [...currentTodo];
+    updateTodo(copy.filter((taskid)=> taskid.id != tasktodelete)); 
+    console.log(currentTodo);
+
 }
 
 const addTask = (userInput) => {
@@ -43,7 +32,7 @@ const addTask = (userInput) => {
         
             {currentTodo.map((tasks) => {
                 return(
-                    <Todo todos = {tasks} />
+                    <Todo todos = {tasks} deleteTask={deleteTask} key={tasks.id}/>
                 )
             }
 

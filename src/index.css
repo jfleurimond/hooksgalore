@@ -21,3 +21,8 @@ code {
 .container {
   margin: 60px; 
 }
+
+.xbtn {
+  color: red;
+  cursor: pointer;
+}
